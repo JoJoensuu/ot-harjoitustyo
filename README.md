@@ -1,5 +1,8 @@
 #Ohjelmistotekniikka, harjoitustyö
-Tavallista tekstiä, **lihavoitua tekstiä** ja *kursivoitua tekstiä*.
+
+##Tehtävät
+
+#####Viikko 1
 
 [gitlog.txt](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
