@@ -1,0 +1,144 @@
+commit 0ef61274b1812e068bee9078c6a11a13e9a5d792
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:33:25 2022 +0200
+
+    -
+
+ tiedostoja/file1.txt | 1 -
+ tiedostoja/file2.txt | 0
+ 2 files changed, 1 deletion(-)
+
+commit 4e1346e9461354f184c745ac41397256d8fda957
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:32:04 2022 +0200
+
+    -
+
+ tiedostoja/file3.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 99a25276f39b13b263a2c95b092cbac009cab0c3
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:30:46 2022 +0200
+
+    lisätty rivi
+
+ tiedostoja/file3.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit b96d6e53bf8aa248141235ae2998ff2707dff050
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:29:46 2022 +0200
+
+    lisätty tiedostoja
+
+ tiedostoja/file1.txt | 1 +
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 1 insertion(+)
+
+commit 3ce741a990f111916901374e41cc46fac8f4448d
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:28:40 2022 +0200
+
+    -
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 15814cef37364a4545254e8fec3003217a3e7697
+Author: Joni Joensuu <joni.joens@gmail.com>
+Date:   Tue Mar 22 20:26:20 2022 +0200
+
+    lisätty kansio ja tiedostoja
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit de7f4c12f4b44f93f57b91bccd3c9654902aee89
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Tue Mar 22 20:15:38 2022 +0200
+
+    Muutoksia ja poistoja
+
+ eka.txt    | 2 +-
+ kolmas.txt | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+commit 5a8b052e11ca3815a006cff2696b6d7f89c24ac0
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 19:00:38 2022 +0200
+
+    uudelleennimeäminen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7a0e37e9811b023d32031159395439d0e2e0e846
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:59:06 2022 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 24f9854deea578f6cb264b2640b46c2b2df60127
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:57:08 2022 +0200
+
+    yksi muutos
+
+ tiedosto.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 910b28924719f816944eeb2117eec098372ed99d
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:53:49 2022 +0200
+
+    luotu tiedosto.txt
+
+ stuff/tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b6ddac0a9a937d49e37f3142c996d3a13b574c18
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:53:16 2022 +0200
+
+    kaksi muutosta
+
+ kolmas.txt | 2 ++
+ toinen.txt | 1 +
+ 2 files changed, 3 insertions(+)
+
+commit f280b858445a9838efaea2008854d24de1a35c8b
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:52:23 2022 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b5e014542282606e6a0f1dc4aef7447820f6edad
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:47:23 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 2601e27f7f9364921aa07c9bbf7cd4603309776b
+Author: Joni Joensuu <joni-pekka.joensuu@helsinki.fi>
+Date:   Mon Mar 21 18:42:42 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
