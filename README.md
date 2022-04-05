@@ -1,14 +1,56 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Strenght training app
+
+Sovelluksen avulla käyttäjä voi luoda itselleen harjoituspäiviä, joihin voi tallentaa erilaisia harjoituksia.
+
+Kuntosaliharjoitusten tapauksessa käyttäjä voi lisätä harjoitukseen sarjat, toistomäärät, palautumisajat, sekä tekstimuotoisia kommentteja.
+Käyttäjä näkee kuntosaliikkeen kohdalla kyseisen liikkeen edellisten harjoitusten sarjapainot.
 
 ## Tehtävät
 
-##### Viikko 1
+[Vaatimusmäärittely](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/Dokumentaatio/vaatimusmaarittely.md)
 
-[gitlog.txt](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[Työajanseuranta](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/Dokumentaatio/tuntikirjanpito.md)
 
-[komentorivi.txt](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+[Changelog](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/Dokumentaatio/changelog.md)
 
-##### Viikko 2
-[vaatimusmäärittely](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/Dokumentaatio/vaatimusmaarittely.md)
+## Asennus
 
-[työajanseuranta](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/Dokumentaatio/tuntikirjanpito.md)
+1. Asenne riippuvuudet komennolla:
+
+```
+poetry install
+```
+2. Suorita vaadittavat alustustoimenpiteet komennolla:
+
+```
+poetry run invoke build
+```
+
+3. Käynnistä sovellus komennolla:
+
+```
+poetry run invoke start
+```
+
+## Komentorivitoiminnot
+
+### Ohjelman suorittaminen
+Ohjelman pystyy suorittamaan komennolla:
+
+```
+poetry run invoke start
+```
+
+### Testaus
+Testit suoritetaan komennolla:
+
+```
+poetry run invoke test
+```
+
+### Testikattavuus
+Testikattavuusraportin voi generoida komennolla:
+
+```
+poetry run invoke coverage-report
+```
