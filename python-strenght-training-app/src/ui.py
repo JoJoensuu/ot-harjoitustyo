@@ -1,6 +1,6 @@
 from tkinter import Tk, ttk, constants
 
-class UI:
+class UserInterface:
     def __init__(self, root):
         self._root = root
 
@@ -30,6 +30,6 @@ class UI:
 
 window = Tk()
 window.title("TkInter example")
-ui = UI(window)
+ui = UserInterface(window)
 ui.start()
 window.mainloop()
