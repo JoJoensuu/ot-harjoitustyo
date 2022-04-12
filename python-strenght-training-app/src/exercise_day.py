@@ -1,17 +1,14 @@
 from datetime import date
+from exercise import Exercise
 
 class Day:
     def __init__(self):
         self.exercises = []
         self.date = date.today()
-    
-    def __str__(self):
-        return f"{self.exercises[0]}"
 
-    def add_exercise(self, exercise):
+    def list_exercises(self):
+        return self.exercises
+
+    def add_exercise(self, name, sets, reps):
+        exercise = Exercise(name, sets, reps)
         self.exercises.append(exercise)
-
-if __name__ == "__main__":
-    paiva = Day()
-    paiva.add_exercise("running")
-    print(paiva)
