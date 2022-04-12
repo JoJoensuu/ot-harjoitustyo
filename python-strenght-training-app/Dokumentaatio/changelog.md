@@ -18,3 +18,10 @@
 - Ensimmäinen unittest ja testikattavuusraportti
 - Lisätty ensimmäiset invoke-tehtävät tiedostoon tasks.py
 - Luotu changelog.md
+
+## Viikko 4
+
+- Lisätty .pylintrc ja päivitetty tasks.py toteuttamaan poetry run invoke lint
+- Lisätty luokka exercise.py, sekä alustava pohja luokalle ui.py
+- Lisätty uutta toiminnallisuutta luokkaan exercise_day.py
+- Lisätty unittestit uusille toiminnallisuuksille, sekä luokille
