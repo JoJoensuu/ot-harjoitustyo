@@ -5,11 +5,10 @@ Sovelluksen avulla käyttäjän on mahdollista pitää kirjaa ja suunnitella kun
 ## Sovelluksen tarjoama toiminnallisuus
 - [x] Käyttäjä voi lisätä uuden harjoituspäivän
 - [x] Käyttäjä voi lisätä harjoituspäivään rajoittamattoman määrän kuntosaliliikkeitä
-- Jokaisen liikkeen kohdalle voi lisätä sarjat, toistot, tauot, palautusajat, sekä tekstimuotoisia huomioita
+- Jokaisen liikkeen kohdalle voi lisätä sarjat, toistot, tauot, sekä tekstimuotoisia huomioita
 	- [x] sarjat
 	- [x] toistot
 	- [ ] tauot
-	- [ ] palautusajat
 	- [ ] huomiot
 - [ ] Käyttäjä näkee kuntosaliliikkeen kohdalla edellisten harjoitusten sarjapainot
 - [ ] Sovelluksella on käyttöliittymä
