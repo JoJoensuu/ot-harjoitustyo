@@ -14,5 +14,5 @@ class ExerciseRepository:
         return [User(row["username"], row["password"]) for row in rows]
 
 
-user_repository = UserRepository(get_database_connection())
+user_repository = ExerciseRepository(get_database_connection())
 users = user_repository.find_all()

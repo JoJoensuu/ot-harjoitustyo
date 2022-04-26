@@ -1,5 +1,5 @@
 import unittest
-from exercise import Exercise
+from entities.exercise import Exercise
 
 class TestExercise(unittest.TestCase):
     def setUp(self):

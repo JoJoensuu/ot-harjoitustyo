@@ -1,11 +1,18 @@
 import datetime
 from ui.console import Console
 from entities.exercise import Exercise
+from repositories.exercise_day_repository import ExerciseDayRepository
+from database_connection import get_database_connection
+from initialize_database import initialize_database
+
+
 
 class Service:
     def __init__(self):
         self._exercise_days = {}
         self._console = Console()
+        self._connection = get_database_connection()
+        self._repository = ExerciseDayRepository(self._connection)
 
     def ask_date(self):
         self._console.print_out("Select date: ")
@@ -16,15 +23,13 @@ class Service:
         return date
 
     def list_exercise_days(self):
-        for day in self._exercise_days:
-            print(day)
+        days = self._repository.find_all()
+        for day in days:
+            print(day[1])
 
     def add_exercise_day(self):
         date = self.ask_date()
-        if date not in self._exercise_days:
-            self._exercise_days[date] = []
-        else:
-            self._console.print_out("Date already in calendar")
+        self._repository.add_day(date)
 
     def add_exercise(self):
         date = self.ask_date()

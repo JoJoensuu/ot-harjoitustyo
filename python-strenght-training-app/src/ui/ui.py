@@ -1,11 +1,13 @@
 from ui.console import Console
 from services.service import Service
+from initialize_database import initialize_database
 
 COMMANDS = {
     "0": "x QUIT",
     "1": "1 add exercise day",
     "2": "2 add exercise",
-    "3": "3 list exercises in given day"
+    "3": "3 list exercises in given day",
+    "4": "4 list exercise days"
 }
 
 class UI:
@@ -14,7 +16,9 @@ class UI:
         self._service = Service()
 
     def start(self):
+        initialize_database()
         self._instructions()
+        
 
         while True:
             command = self._console.read_input("command: ")
@@ -30,6 +34,8 @@ class UI:
                 self._add_exercise()
             elif command == "3":
                 self._list_exercises_in_day()
+            elif command == "4":
+                self._list_exercise_days()
 
     def _instructions(self):
         self._console.print_out("Strenght training app")
@@ -44,6 +50,9 @@ class UI:
 
     def _list_exercises_in_day(self):
         self._service.list_exercises_in_day()
+
+    def _list_exercise_days(self):
+        self._service.list_exercise_days()
 
 if __name__ == "__main__":
     app = UI()

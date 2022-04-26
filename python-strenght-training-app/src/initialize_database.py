@@ -10,7 +10,7 @@ def drop_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute('''
-        drop table if exists users;
+        drop table if exists exercise_days;
     ''')
 
     connection.commit()
@@ -28,18 +28,6 @@ def create_tables(connection):
         create table exercise_days (
             id serial primary key,
             date date
-        );
-    ''')
-
-    connection.commit()
-
-    cursor.execute('''
-        create table exercises (
-            id serial primary key,
-            date_id integer references exercise_days,
-            name text,
-            sets integer,
-            reps integer
         );
     ''')
 
