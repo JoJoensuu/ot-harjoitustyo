@@ -1,6 +1,6 @@
 import datetime
-from console import Console
-from exercise import Exercise
+from ui.console import Console
+from entities.exercise import Exercise
 
 class Service:
     def __init__(self):

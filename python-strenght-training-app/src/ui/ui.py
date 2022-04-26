@@ -1,5 +1,5 @@
-from console import Console
-from service import Service
+from ui.console import Console
+from services.service import Service
 
 COMMANDS = {
     "0": "x QUIT",
