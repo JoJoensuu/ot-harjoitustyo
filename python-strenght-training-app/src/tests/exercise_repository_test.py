@@ -9,7 +9,7 @@ class TestExerciseDayRepository(unittest.TestCase):
         exercise_day_repository.delete_all()
         self.date1 = datetime.datetime(2022, 5, 1)
         exercise_day_repository.add_day(self.date1)
-        self.exercise1 = Exercise("Test1")
+        self.exercise1 = Exercise("Test1", "0", "0", "0", "0")
         self.exercise2 = Exercise("Test2")
 
     def test_add_exercise_adds_exercise_to_database(self):
