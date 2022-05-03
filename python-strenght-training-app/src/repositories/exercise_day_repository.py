@@ -22,8 +22,8 @@ class ExerciseDayRepository:
         self._cursor.execute('delete from exercise_days')
         self._connection.commit()
 
-    def delete_single(self, id):
-        self._cursor.execute('DELETE FROM exercise_days WHERE id=(?)', [id])
+    def delete_single(self, date_id):
+        self._cursor.execute('DELETE FROM exercise_days WHERE id=(?)', [date_id])
         self._connection.commit()
 
 

@@ -1,11 +1,15 @@
 import datetime
 from ui.console import Console
 from entities.exercise import Exercise
-from repositories.exercise_day_repository import (exercise_day_repository as default_exercise_day_repository)
-from repositories.exercise_repository import (exercise_repository as default_exercise_repository)
+from repositories.exercise_day_repository import (
+    exercise_day_repository as default_exercise_day_repository)
+from repositories.exercise_repository import (
+    exercise_repository as default_exercise_repository)
 
 class Service:
-    def __init__(self, exercise_day_repository=default_exercise_day_repository, exercise_repository=default_exercise_repository):
+    def __init__(
+        self, exercise_day_repository=default_exercise_day_repository,
+        exercise_repository=default_exercise_repository):
         self._console = Console()
         self._exercise_day_repository = exercise_day_repository
         self._exercise_repository = exercise_repository
@@ -24,7 +28,7 @@ class Service:
 
     def list_exercise_days(self):
         days = self._exercise_day_repository.list_days()
-        if days == None:
+        if not days:
             self._console.print_out("No dates in calendar")
         else:
             for day in days:
@@ -63,7 +67,11 @@ class Service:
             request = self._exercise_repository.list_exercises(id)
             for row in request:
                 self._console.print_out(
-                    f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps, {row[4]} minutes rest between sets, notes: {row[5]}"
+                    f"""ID: {row[0]} Exercise: {row[1]}, 
+                    {row[2]} sets, 
+                    {row[3]} reps, 
+                    {row[4]} minutes rest between sets, 
+                    notes: {row[5]}"""
                 )
 
     def clear_calendar(self):
@@ -94,4 +102,3 @@ class Service:
         else:
             exercise_id = self._console.read_input("Enter exercise id that you want to remove: ")
             self._exercise_repository.delete_single(exercise_id)
-

@@ -9,8 +9,8 @@ class ExerciseRepository:
         try:
             self._cursor.execute(
                 """
-                INSERT INTO exercises 
-                (day_id, name, sets, reps, rest, comments) 
+                INSERT INTO exercises
+                (day_id, name, sets, reps, rest, comments)
                 VALUES (?, ?, ?, ?, ?, ?)"""
                 ,
                 (
@@ -29,7 +29,7 @@ class ExerciseRepository:
 
     def list_exercises(self, date_id):
         rows = self._cursor.execute("""
-        SELECT id, name, sets, reps, rest, comments 
+        SELECT id, name, sets, reps, rest, comments
         FROM exercises where day_id=(?)""", [date_id])
         return rows
 
@@ -43,20 +43,20 @@ class ExerciseRepository:
         except:
             return False
 
-    def delete_single(self, id):
+    def delete_single(self, exercise_id):
         try:
             self._cursor.execute("""
             DELETE FROM exercises WHERE id=(?)
-            """, [id])
+            """, [exercise_id])
             self._connection.commit()
             return True
         except:
             return False
 
-    def get_exercise_data(self, id):
+    def get_exercise_data(self, exercise_id):
         self._cursor.execute("""
         SELECT * FROM exercises WHERE id=(?)
-        """, [id])
+        """, [exercise_id])
         result = self._cursor.fetchone()
         return result
 
