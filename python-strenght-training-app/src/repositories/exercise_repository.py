@@ -17,7 +17,7 @@ class ExerciseRepository:
             return False
 
     def list_exercises(self, date_id):
-        self._cursor.execute('SELECT id, name, sets, reps, rest, comments FROM exercises WHERE day_id=(?)', [date_id])
+        self._cursor.execute('SELECT * FROM exercises WHERE day_id=(?)', [date_id])
         result = self._cursor.fetchall()
         return result
 
