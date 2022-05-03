@@ -14,20 +14,25 @@ class ExerciseRepository:
         self._cursor.execute('INSERT INTO exercises (day_id, name, sets, reps) VALUES (?, ?, ?, ?)', (day_id, name, sets, reps))
         self._connection.commit()
 
-    def list_exercises(self, id):
+    def list_exercises(self, date_id):
         cursor = self._connection.cursor()
-        cursor.execute('SELECT id, name, sets, reps FROM exercises WHERE day_id=(?)', [id])
+        cursor.execute('SELECT id, name, sets, reps FROM exercises WHERE day_id=(?)', [date_id])
         result = cursor.fetchall()
         return result
 
-    def delete_all(self, id):
+    def delete_all(self, date_id):
         cursor = self._connection.cursor()
-        cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [id])
+        cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [date_id])
         self._connection.commit()
 
     def delete_single(self, id):
         self._cursor.execute('DELETE FROM exercises WHERE id=(?)', [id])
         self._connection.commit()
+
+    def get_exercise_data(self, id):
+        self._cursor.execute('SELECT * FROM exercises WHERE id=(?)', [id])
+        result = self._cursor.fetchone()
+        return result
 
 
 exercise_repository = ExerciseRepository(get_database_connection())

@@ -29,3 +29,10 @@ class TestExerciseDayRepository(unittest.TestCase):
         result = exercise_repository.list_exercises(1)
         list = [row for row in result]
         self.assertEqual(len(list), 1)
+
+    def test_get_exercise_data_returns_correct_line(self):
+        exercise_repository.add_exercise(self.date1, "Test1", "1", "1")
+        exercise_repository.add_exercise(self.date1, "Test2", "2", "2")
+        request = exercise_repository.get_exercise_data(1)
+        string = request[1]
+        self.assertEqual(string, "Test1")
