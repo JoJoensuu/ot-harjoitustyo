@@ -52,5 +52,5 @@ class Service:
     def list_exercises_in_day(self):
         date = self.ask_date()
         result = self._exerciseDayRepository.get_date_id(date)
-        self._console.print_out(result[0])
+        self._console.print_out(result)
 

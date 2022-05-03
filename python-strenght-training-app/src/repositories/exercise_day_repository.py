@@ -29,7 +29,7 @@ class ExerciseDayRepository:
         cursor = self._connection.cursor()
         cursor.execute('SELECT id FROM exercise_days WHERE date=(?)', [day])
         result = cursor.fetchone()
-        return result
+        return result[0]
 
     def delete_all(self):
         cursor = self._connection.cursor()
