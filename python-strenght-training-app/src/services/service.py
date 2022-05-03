@@ -35,8 +35,8 @@ class Service:
                 self._console.print_out(f"Id: {day[0]} - {day[1]}")
 
     def add_exercise_day(self, date):
-        id = self._exercise_day_repository.get_date_id(date)
-        if not id:
+        date_id = self._exercise_day_repository.get_date_id(date)
+        if not date_id:
             self._exercise_day_repository.add_day(date)
         else:
             self._console.print_out("Date already in calendar")
@@ -60,40 +60,38 @@ class Service:
                 self._console.print_out("Adding exercise failed")
 
     def list_exercises_in_day(self):
-        id = self.check_date()
-        if not id:
-            self._console.print_out(f"No exercises for selected date")
+        date_id = self.check_date()
+        if not date_id:
+            self._console.print_out("No exercises for selected date")
         else:
-            request = self._exercise_repository.list_exercises(id)
+            request = self._exercise_repository.list_exercises(date_id)
             for row in request:
                 self._console.print_out(
-                    f"""ID: {row[0]} Exercise: {row[1]}, 
-                    {row[2]} sets, 
-                    {row[3]} reps, 
-                    {row[4]} minutes rest between sets, 
+                    f"""ID: {row[0]} Exercise: {row[1]},
+                    {row[2]} sets,
+                    {row[3]} reps,
+                    {row[4]} minutes rest between sets,
                     notes: {row[5]}"""
                 )
 
     def clear_calendar(self):
         confirm = self._console.read_input("Confirm clearing calendar with y")
-        if confirm != "y":
-            return
-        else:
+        if confirm == "y":
             self._exercise_day_repository.delete_all()
 
     def remove_date(self):
-        id = self.check_date()
-        if not id:
+        date_id = self.check_date()
+        if not date_id:
             self._console.print_out("Date not in calendar")
         else:
-            self._exercise_day_repository.delete_single(id)
+            self._exercise_day_repository.delete_single(date_id)
 
     def clear_exercises(self):
-        id = self.check_date()
-        if not id:
+        date_id = self.check_date()
+        if not date_id:
             self._console.print_out("Date not in calendar")
         else:
-            self._exercise_repository.delete_all(id)
+            self._exercise_repository.delete_all(date_id)
 
     def delete_exercise(self):
         id = self.check_date()
