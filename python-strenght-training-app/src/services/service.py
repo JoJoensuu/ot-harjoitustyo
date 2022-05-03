@@ -1,6 +1,5 @@
 import datetime
 from ui.console import Console
-from entities.exercise import Exercise
 from repositories.exercise_day_repository import ExerciseDayRepository
 from database_connection import get_database_connection
 from repositories.exercise_repository import ExerciseRepository

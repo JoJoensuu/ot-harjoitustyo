@@ -14,3 +14,10 @@ class TestExerciseDayRepository(unittest.TestCase):
         result = exercise_repository.list_exercises(1)
         list = [row for row in result]
         self.assertEqual(len(list), 1)
+
+    def test_delete_all_removes_exercises_from_day(self):
+        exercise_repository.add_exercise(self.date1, "Bench press", "3", "5")
+        exercise_repository.delete_all(1)
+        result = exercise_repository.list_exercises(1)
+        list = [row for row in result]
+        self.assertEqual(len(list), 0)
