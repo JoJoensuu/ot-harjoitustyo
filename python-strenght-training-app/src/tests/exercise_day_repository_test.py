@@ -10,4 +10,5 @@ class TestExerciseDayRepository(unittest.TestCase):
     def test_add_day_adds_day_to_database(self):
         exercise_day_repository.add_day(self.date1)
         days = exercise_day_repository.list_days()
-        self.assertEqual(len(days), 1)
+        list = [day for day in days]
+        self.assertEqual(len(list), 1)
