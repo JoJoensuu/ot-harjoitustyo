@@ -17,7 +17,7 @@ class ExerciseRepository:
             return False
 
     def list_exercises(self, date_id):
-        rows = self._cursor.execute('SELECT * FROM exercises WHERE day_id=(?)', [date_id])
+        rows = self._cursor.execute('SELECT * FROM exercises')
         return rows
 
     def delete_all(self, date_id):
