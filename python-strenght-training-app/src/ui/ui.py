@@ -11,7 +11,8 @@ COMMANDS = {
     "5": "5 clear calendar",
     "6": "6 remove date from calendar",
     "7": "7 remove all exercises from date",
-    "8": "8 remove single exercise"
+    "8": "8 remove single exercise",
+    "9": "9 list instructions"
 }
 
 class UI:
@@ -48,6 +49,8 @@ class UI:
                 self._clear_exercises()
             elif command == "8":
                 self._delete_exercise()
+            elif command == "9":
+                self._instructions()
 
     def _instructions(self):
         self._console.print_out("Strenght training app")

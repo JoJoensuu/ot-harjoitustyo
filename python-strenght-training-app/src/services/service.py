@@ -17,11 +17,7 @@ class Service:
 
     def check_date(self):
         date = self.ask_date()
-        id = self._exercise_day_repository.get_date_id(date)
-        if not id:
-            return False
-        else:
-            return id
+        return self._exercise_day_repository.get_date_id(date)
 
     def ask_date(self):
         self._console.print_out("Select date: ")
@@ -33,8 +29,11 @@ class Service:
 
     def list_exercise_days(self):
         days = self._exercise_day_repository.list_days()
-        for day in days:
-            self._console.print_out(f"Id: {day[0]} - {day[1]}")
+        if days == None:
+            self._console.print_out("No dates in calendar")
+        else:
+            for day in days:
+                self._console.print_out(f"Id: {day[0]} - {day[1]}")
 
     def add_exercise_day(self):
         date = self.ask_date()
