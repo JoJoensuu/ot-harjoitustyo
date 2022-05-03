@@ -94,8 +94,8 @@ class Service:
             self._exercise_repository.delete_all(date_id)
 
     def delete_exercise(self):
-        id = self.check_date()
-        if not id:
+        date_id = self.check_date()
+        if not date_id:
             self._console.print_out("Date not in calendar")
         else:
             exercise_id = self._console.read_input("Enter exercise id that you want to remove: ")
