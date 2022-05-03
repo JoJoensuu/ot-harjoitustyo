@@ -58,7 +58,8 @@ class UI:
             self._console.print_out(COMMANDS[i])
 
     def _add_exercise_day(self):
-        self._service.add_exercise_day()
+        date = self._service.check_date()
+        self._service.add_exercise_day(date)
 
     def _add_exercise(self):
         self._service.add_exercise()

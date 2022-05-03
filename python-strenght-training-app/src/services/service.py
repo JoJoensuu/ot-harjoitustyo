@@ -30,15 +30,14 @@ class Service:
             for day in days:
                 self._console.print_out(f"Id: {day[0]} - {day[1]}")
 
-    def add_exercise_day(self):
-        date = self.ask_date()
+    def add_exercise_day(self, date):
         id = self._exercise_day_repository.get_date_id(date)
         if not id:
             self._exercise_day_repository.add_day(date)
         else:
             self._console.print_out("Date already in calendar")
 
-    def add_exercise(self):
+    def add_exercise(self, date):
         date = self.ask_date()
         if not self._exercise_day_repository.get_date_id(date):
             self._exercise_day_repository.add_day(date)
@@ -96,4 +95,3 @@ class Service:
         else:
             self._exercise_repository.delete_single(id)
 
-service = Service()
