@@ -6,6 +6,7 @@ class TestExerciseDayRepository(unittest.TestCase):
     def setUp(self):
         exercise_day_repository.delete_all()
         self.date1 = datetime.datetime(2022,5,1)
+        self.date2 = datetime.datetime(2022, 12, 10)
 
     def test_add_day_adds_day_to_database(self):
         exercise_day_repository.add_day(self.date1)
@@ -20,3 +21,11 @@ class TestExerciseDayRepository(unittest.TestCase):
     def test_get_date_id_returns_id(self):
         exercise_day_repository.add_day(self.date1)
         self.assertEqual(exercise_day_repository.get_date_id(self.date1), 1)
+
+    def test_delete_single_removes_one_day(self):
+        exercise_day_repository.add_day(self.date1)
+        exercise_day_repository.add_day(self.date2)
+        exercise_day_repository.delete_single(1)
+        days = exercise_day_repository.list_days()
+        list = [day for day in days]
+        self.assertEqual(len(list), 1)
