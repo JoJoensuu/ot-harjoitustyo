@@ -38,7 +38,7 @@ class Service:
 
     def add_exercise(self):
         date = self.ask_date()
-        if not self._exerciseDayRepository.check_date(date):
+        if not self._exerciseDayRepository.check_date_exists(date):
             self._exerciseDayRepository.add_day(date)
         while True:
             self._console.print_out("Enter exercise, 0 to quit")
@@ -51,6 +51,11 @@ class Service:
 
     def list_exercises_in_day(self):
         date = self.ask_date()
-        result = self._exerciseDayRepository.get_date_id(date)
-        self._console.print_out(result)
+        id = self._exerciseDayRepository.get_date_id(date)
+        if not id:
+            self._console.print_out(f"No exercises for {date}")
+        else:
+            request = self._exerciseRepository.list_exercises(id)
+            for row in request:
+                self._console.print_out(f"Exercise: {row[0]}, {row[1]} sets, {row[2]} reps")
 
