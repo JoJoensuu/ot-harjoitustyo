@@ -1,5 +1,4 @@
 from database_connection import get_database_connection
-from entities.exercise import Exercise
 
 class ExerciseRepository:
     def __init__(self, connection):
