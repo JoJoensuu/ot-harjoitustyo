@@ -25,3 +25,13 @@
 - Lisätty luokka exercise.py, sekä alustava pohja luokalle ui.py
 - Lisätty uutta toiminnallisuutta luokkaan exercise_day.py
 - Lisätty unittestit uusille toiminnallisuuksille, sekä luokille
+
+## Viikko 5
+
+- Poistettu luokat user ja exercise_day
+- Lisätty luokat exercise_day_repository.py, exercise_repository.py, database_connection.py, initialize_database.py, service.py yms.
+
+## Viikko 6
+
+- Lisätty uutta toiminnallisuutta
+- Päivitetty testit vastaamaan uusia luokkia
