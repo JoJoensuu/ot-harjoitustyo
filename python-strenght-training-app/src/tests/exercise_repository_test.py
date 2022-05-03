@@ -12,6 +12,7 @@ class TestExerciseDayRepository(unittest.TestCase):
         self.exercise2 = Exercise("Test2")
 
     def test_list_exercises_returns_list(self):
+        exercise_day_repository.delete_all()
         exercise_repository.add_exercise(self.date1, self.exercise1)
         exercise_repository.add_exercise(self.date1, self.exercise2)
         result = exercise_repository.list_exercises(1)
