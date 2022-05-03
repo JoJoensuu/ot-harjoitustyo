@@ -16,16 +16,14 @@ class ExerciseDayRepository:
 
     def list_days(self):
         cursor = self._connection.cursor()
-
         rows = cursor.execute("select * from exercise_days")
-
         return rows
 
     def check_date(self, day):
         cursor = self._connection.cursor()
         cursor.execute('SELECT * FROM exercise_days WHERE date=(?)', [day])
         result = cursor.fetchone()
-        return result[0] if result else False
+        return result[1] if result else False
 
     def get_date_id(self, day):
         cursor = self._connection.cursor()
