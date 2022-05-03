@@ -38,4 +38,4 @@ class ExerciseDayRepository:
         cursor.execute('delete from exercise_days')
         self._connection.commit()
 
-exercise_day_repository = ExerciseDayRepository(get_database_connection)
+exercise_day_repository = ExerciseDayRepository(get_database_connection())
