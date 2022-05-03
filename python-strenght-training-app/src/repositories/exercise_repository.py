@@ -37,7 +37,6 @@ class ExerciseRepository:
         except:
             return False
 
-
     def get_exercise_data(self, id):
         self._cursor.execute('SELECT * FROM exercises WHERE id=(?)', [id])
         result = self._cursor.fetchone()

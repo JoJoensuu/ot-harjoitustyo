@@ -15,6 +15,14 @@ class Service:
         self._exercise_day_repository = ExerciseDayRepository(self._connection)
         self._exercise_repository = ExerciseRepository(self._connection)
 
+    def check_date(self):
+        date = self.ask_date()
+        id = self._exercise_day_repository.get_date_id(date)
+        if not id:
+            return False
+        else:
+            return id
+
     def ask_date(self):
         self._console.print_out("Select date: ")
         year = self._console.read_year()
@@ -56,10 +64,9 @@ class Service:
                 self._console.print_out("Adding exercise failed")
 
     def list_exercises_in_day(self):
-        date = self.ask_date()
-        id = self._exercise_day_repository.get_date_id(date)
+        id = self.check_date()
         if not id:
-            self._console.print_out(f"No exercises for {date}")
+            self._console.print_out(f"No exercises for selected date")
         else:
             request = self._exercise_repository.list_exercises(id)
             for row in request:
@@ -75,9 +82,22 @@ class Service:
             self._exercise_day_repository.delete_all()
 
     def remove_date(self):
-        date = self.ask_date()
-        id = self._exercise_day_repository.get_date_id(date)
+        id = self.check_date()
         if not id:
-            self._console.print_out(f"Date not in calendar")
+            self._console.print_out("Date not in calendar")
         else:
             self._exercise_day_repository.delete_single(id)
+
+    def clear_exercises(self):
+        id = self.check_date()
+        if not id:
+            self._console.print_out("Date not in calendar")
+        else:
+            self._exercise_repository.delete_all(id)
+
+    def delete_exercise(self):
+        id = self.check_date()
+        if not id:
+            self._console.print_out("Date not in calendar")
+        else:
+            self._exercise_repository.delete_single(id)
