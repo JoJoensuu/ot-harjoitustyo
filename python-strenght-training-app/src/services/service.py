@@ -1,19 +1,16 @@
 import datetime
 from ui.console import Console
 from entities.exercise import Exercise
-from repositories.exercise_day_repository import ExerciseDayRepository
-from database_connection import get_database_connection
-from repositories.exercise_repository import ExerciseRepository
+from repositories.exercise_day_repository import (exercise_day_repository as default_exercise_day_repository)
+from repositories.exercise_repository import (exercise_repository as default_exercise_repository)
 
 
 
 class Service:
-    def __init__(self):
-        self._exercise_days = {}
+    def __init__(self, exercise_day_repository=default_exercise_day_repository, exercise_repository=default_exercise_repository):
         self._console = Console()
-        self._connection = get_database_connection()
-        self._exercise_day_repository = ExerciseDayRepository(self._connection)
-        self._exercise_repository = ExerciseRepository(self._connection)
+        self._exercise_day_repository = exercise_day_repository
+        self._exercise_repository = exercise_repository
 
     def check_date(self):
         date = self.ask_date()
@@ -100,3 +97,5 @@ class Service:
             self._console.print_out("Date not in calendar")
         else:
             self._exercise_repository.delete_single(id)
+
+service = Service()
