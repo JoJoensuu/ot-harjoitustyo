@@ -11,8 +11,8 @@ class Service:
         self._exercise_days = {}
         self._console = Console()
         self._connection = get_database_connection()
-        self._exerciseDayRepository = ExerciseDayRepository(self._connection)
-        self._exerciseRepository = ExerciseRepository(self._connection)
+        self._exercise_day_repository = ExerciseDayRepository(self._connection)
+        self._exercise_repository = ExerciseRepository(self._connection)
 
     def ask_date(self):
         self._console.print_out("Select date: ")
@@ -23,22 +23,22 @@ class Service:
         return date
 
     def list_exercise_days(self):
-        days = self._exerciseDayRepository.list_days()
+        days = self._exercise_day_repository.list_days()
         for day in days:
             print(day[0])
 
     def add_exercise_day(self):
         date = self.ask_date()
-        id = self._exerciseDayRepository.get_date_id(date)
+        id = self._exercise_day_repository.get_date_id(date)
         if not id:
-            self._exerciseDayRepository.add_day(date)
+            self._exercise_day_repository.add_day(date)
         else:
             self._console.print_out("Date already in calendar")
 
     def add_exercise(self):
         date = self.ask_date()
-        if not self._exerciseDayRepository.get_date_id(date):
-            self._exerciseDayRepository.add_day(date)
+        if not self._exercise_day_repository.get_date_id(date):
+            self._exercise_day_repository.add_day(date)
         while True:
             self._console.print_out("Enter exercise, 0 to quit")
             name = self._console.read_input("Movement name: ")
@@ -46,15 +46,15 @@ class Service:
                 break
             sets = self._console.read_input("Sets: ")
             reps = self._console.read_input("Reps: ")
-            self._exerciseRepository.add_exercise(date, name, sets, reps)
+            self._exercise_repository.add_exercise(date, name, sets, reps)
 
     def list_exercises_in_day(self):
         date = self.ask_date()
-        id = self._exerciseDayRepository.get_date_id(date)
+        id = self._exercise_day_repository.get_date_id(date)
         if not id:
             self._console.print_out(f"No exercises for {date}")
         else:
-            request = self._exerciseRepository.list_exercises(id)
+            request = self._exercise_repository.list_exercises(id)
             for row in request:
                 self._console.print_out(
                     f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
