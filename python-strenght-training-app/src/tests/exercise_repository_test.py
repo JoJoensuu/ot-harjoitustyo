@@ -1,0 +1,16 @@
+import unittest
+import datetime
+from repositories.exercise_repository import exercise_repository
+from repositories.exercise_day_repository import exercise_day_repository
+
+class TestExerciseDayRepository(unittest.TestCase):
+    def setUp(self):
+        exercise_day_repository.delete_all()
+        self.date1 = datetime.datetime(2022, 5, 1)
+        exercise_day_repository.add_day(self.date1)
+
+    def test_add_exercise_adds_exercise_to_database(self):
+        exercise_repository.add_exercise(self.date1, "Bench press", "3", "5")
+        result = exercise_repository.list_exercises(1)
+        list = [row for row in result]
+        self.assertEqual(len(list), 1)
