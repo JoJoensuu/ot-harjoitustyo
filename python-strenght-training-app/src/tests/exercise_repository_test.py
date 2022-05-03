@@ -13,10 +13,12 @@ class TestExerciseDayRepository(unittest.TestCase):
         self.exercise2 = Exercise("Test2")
 
     def test_list_exercises_returns_list(self):
+        exercise_day_repository.add_day(self.date1)
         exercise_repository.add_exercise(self.date1, self.exercise1)
         exercise_repository.add_exercise(self.date1, self.exercise2)
         result = exercise_repository.list_exercises(1)
-        self.assertEqual(print(result[0]), 2)
+        list = [row for row in result]
+        self.assertEqual(len(list), 2)
 
     def test_add_exercise_adds_exercise_to_database(self):
         self.assertEqual(exercise_repository.add_exercise(self.date1, self.exercise1), True)
