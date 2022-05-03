@@ -29,11 +29,11 @@ class Service:
 
     def add_exercise_day(self):
         date = self.ask_date()
-        request = self._exerciseDayRepository.add_day(date)
-        if not request:
-            self._console.print_out("Date already in calendar")
+        id = self._exerciseDayRepository.get_date_id(date)
+        if not id:
+            self._exerciseDayRepository.add_day(date)
         else:
-            self._console.print_out("Adding date was successful")
+            self._console.print_out("Date already in calendar")
 
     def add_exercise(self):
         date = self.ask_date()

@@ -6,12 +6,8 @@ class ExerciseDayRepository:
         self._cursor = self._connection.cursor()
 
     def add_day(self, day):
-        if not self.check_date_exists(day):
-            self._cursor.execute('INSERT INTO exercise_days (date) VALUES (?)', [day])
-            self._connection.commit()
-            return True
-        else:
-            return False
+        self._cursor.execute('INSERT INTO exercise_days (date) VALUES (?)', [day])
+        self._connection.commit()
 
     def list_days(self):
         rows = self._cursor.execute("select * from exercise_days")
