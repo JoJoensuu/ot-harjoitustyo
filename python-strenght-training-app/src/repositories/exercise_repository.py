@@ -22,12 +22,21 @@ class ExerciseRepository:
         return result
 
     def delete_all(self, date_id):
-        self._cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [date_id])
-        self._connection.commit()
+        try:
+            self._cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [date_id])
+            self._connection.commit()
+            return True
+        except:
+            return False
 
     def delete_single(self, id):
-        self._cursor.execute('DELETE FROM exercises WHERE id=(?)', [id])
-        self._connection.commit()
+        try:
+            self._cursor.execute('DELETE FROM exercises WHERE id=(?)', [id])
+            self._connection.commit()
+            return True
+        except:
+            return False
+
 
     def get_exercise_data(self, id):
         self._cursor.execute('SELECT * FROM exercises WHERE id=(?)', [id])

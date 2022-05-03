@@ -12,22 +12,24 @@ class TestExerciseDayRepository(unittest.TestCase):
         self.exercise1 = Exercise("Test1", "0", "0", "0", "0")
         self.exercise2 = Exercise("Test2")
 
+    def test_list_exercises_returns_list(self):
+        exercise_repository.add_exercise(self.date1, self.exercise1)
+        exercise_repository.add_exercise(self.date1, self.exercise2)
+        result = exercise_repository.list_exercises(1)
+        list = [row for row in result]
+        self.assertEqual(len(list), 2)
+
     def test_add_exercise_adds_exercise_to_database(self):
         self.assertEqual(exercise_repository.add_exercise(self.date1, self.exercise1), True)
 
     def test_delete_all_removes_exercises_from_day(self):
         exercise_repository.add_exercise(self.date1, self.exercise1)
-        exercise_repository.delete_all(1)
-        result = exercise_repository.list_exercises(1)
-        self.assertEqual(print(result), 0)
+        self.assertEqual(exercise_repository.delete_all(1), True)
 
     def test_delete_single_removes_one_exercise(self):
         exercise_repository.add_exercise(self.date1, self.exercise1)
         exercise_repository.add_exercise(self.date1, self.exercise2)
-        exercise_repository.delete_single(2)
-        result = exercise_repository.list_exercises(1)
-        list = [row for row in result]
-        self.assertEqual(len(list), 1)
+        self.assertEqual(exercise_repository.delete_single(2), True)
 
     def test_get_exercise_data_returns_correct_line(self):
         exercise_repository.add_exercise(self.date1, self.exercise1)
