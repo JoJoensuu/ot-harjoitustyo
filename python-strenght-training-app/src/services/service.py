@@ -4,8 +4,6 @@ from entities.exercise import Exercise
 from repositories.exercise_day_repository import (exercise_day_repository as default_exercise_day_repository)
 from repositories.exercise_repository import (exercise_repository as default_exercise_repository)
 
-
-
 class Service:
     def __init__(self, exercise_day_repository=default_exercise_day_repository, exercise_repository=default_exercise_repository):
         self._console = Console()

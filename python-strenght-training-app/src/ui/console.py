@@ -48,3 +48,5 @@ class Console:
                 self.print_out("Enter value between 1-31")
             else:
                 return day
+
+console = Console()

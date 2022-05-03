@@ -2,7 +2,7 @@ import unittest
 from repositories.exercise_day_repository import exercise_day_repository
 from repositories.exercise_repository import exercise_repository
 from entities.exercise import Exercise
-from ui.console import Console
+from ui.console import console
 from services.service import service
 
 class FakeExerciseRepository:
@@ -44,10 +44,8 @@ class FakeExerciseDayRepository:
         list = [x for x in self.days if x != day]
         self.days = list
 
-class FakeConsole:
-
-
 class TestService(unittest.TestCase):
     def setUp(self):
-        self.console = Console()
-        self.days = 
+        service.clear_calendar()
+
+    
