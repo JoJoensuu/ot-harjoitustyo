@@ -26,7 +26,7 @@ class Service:
     def list_exercise_days(self):
         days = self._exercise_day_repository.list_days()
         for day in days:
-            print(day[0])
+            self._console.print_out(f"Id: {day[0]} - {day[1]}")
 
     def add_exercise_day(self):
         date = self.ask_date()
@@ -66,3 +66,18 @@ class Service:
                 self._console.print_out(
                     f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
                 )
+
+    def clear_calendar(self):
+        confirm = self._console.read_input("Confirm clearing calendar with y")
+        if confirm != "y":
+            return
+        else:
+            self._exercise_day_repository.delete_all()
+
+    def remove_date(self):
+        date = self.ask_date()
+        id = self._exercise_day_repository.get_date_id(date)
+        if not id:
+            self._console.print_out(f"Date not in calendar")
+        else:
+            self._exercise_day_repository.delete_single(id)

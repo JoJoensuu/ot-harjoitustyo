@@ -7,7 +7,9 @@ COMMANDS = {
     "1": "1 add exercise day",
     "2": "2 add exercise",
     "3": "3 list exercises in given day",
-    "4": "4 list exercise days"
+    "4": "4 list exercise days",
+    "5": "5 clear calendar",
+    "6": "6 remove date from calendar"
 }
 
 class UI:
@@ -36,11 +38,15 @@ class UI:
                 self._list_exercises_in_day()
             elif command == "4":
                 self._list_exercise_days()
+            elif command == "5":
+                self._clear_calendar()
+            elif command == "6":
+                self._remove_date()
 
     def _instructions(self):
         self._console.print_out("Strenght training app")
-        for command in COMMANDS:
-            self._console.print_out(command)
+        for i in COMMANDS:
+            self._console.print_out(COMMANDS[i])
 
     def _add_exercise_day(self):
         self._service.add_exercise_day()
@@ -53,6 +59,11 @@ class UI:
 
     def _list_exercise_days(self):
         self._service.list_exercise_days()
+    def _clear_calendar(self):
+        self._service.clear_calendar()
+    
+    def _remove_date(self):
+        self._service.remove_date()
 
 if __name__ == "__main__":
     app = UI()
