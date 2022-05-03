@@ -4,7 +4,7 @@ from repositories.exercise_day_repository import exercise_day_repository
 
 class TestExerciseDayRepository(unittest.TestCase):
     def setUp(self):
-        exercise_day_repository.delete_all()
+        #exercise_day_repository.delete_all()
         self.date1 = datetime.datetime(2022,5,1)
         self.date2 = datetime.datetime(1990, 12, 1)
 
