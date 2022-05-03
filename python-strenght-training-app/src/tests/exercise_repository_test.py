@@ -19,8 +19,7 @@ class TestExerciseDayRepository(unittest.TestCase):
         exercise_repository.add_exercise(self.date1, self.exercise1)
         exercise_repository.delete_all(1)
         result = exercise_repository.list_exercises(1)
-        list = [row for row in result]
-        self.assertEqual(len(list), 0)
+        self.assertEqual(print(result), 0)
 
     def test_delete_single_removes_one_exercise(self):
         exercise_repository.add_exercise(self.date1, self.exercise1)
