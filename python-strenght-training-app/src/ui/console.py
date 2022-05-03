@@ -1,5 +1,12 @@
 class Console:
+    """Reads user inputs and prints output.
+    """
     def print_out(self, string):
+        """Output text function.
+
+        Args:
+            string (string): prints out parameter string.
+        """
         print(string)
 
     def read_input(self, string):

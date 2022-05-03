@@ -2,6 +2,11 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
+    """Removes existing tables from database.
+
+    Args:
+        connection: connection entity for database.
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -15,6 +20,11 @@ def drop_tables(connection):
     connection.commit()
 
 def create_tables(connection):
+    """Creates tables into database
+
+    Args:
+        connection: connection entity for database.
+    """
 
     cursor = connection.cursor()
 
@@ -40,6 +50,8 @@ def create_tables(connection):
     connection.commit()
 
 def initialize_database():
+    """Initializes database
+    """
 
     connection = get_database_connection()
 
