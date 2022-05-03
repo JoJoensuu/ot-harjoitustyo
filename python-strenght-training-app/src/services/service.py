@@ -38,7 +38,6 @@ class Service:
             self._console.print_out("Date already in calendar")
 
     def add_exercise(self, date):
-        date = self.ask_date()
         if not self._exercise_day_repository.get_date_id(date):
             self._exercise_day_repository.add_day(date)
         date_id = self._exercise_day_repository.get_date_id(date)
@@ -64,7 +63,8 @@ class Service:
             request = self._exercise_repository.list_exercises(id)
             for row in request:
                 self._console.print_out(
-                    f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
+                    row[2]
+                    #f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
                 )
 
     def clear_calendar(self):
