@@ -15,8 +15,8 @@ class TestExerciseDayRepository(unittest.TestCase):
         exercise_day_repository.delete_all()
         exercise_repository.add_exercise(self.date1, self.exercise1)
         result = exercise_repository.list_exercises(1)
-        row = result[0]
-        self.assertEqual(row[2], "Test1")
+        for row in result:
+            self.assertEqual(row[2], "Test1")
 
     def test_add_exercise_adds_exercise_to_database(self):
         self.assertEqual(exercise_repository.add_exercise(self.date1, self.exercise1), True)
