@@ -31,7 +31,9 @@ def create_tables(connection):
             day_id integer references exercise_days,
             name text,
             sets integer,
-            reps integer
+            reps integer,
+            rest integer,
+            comments text
         );
     ''')
 

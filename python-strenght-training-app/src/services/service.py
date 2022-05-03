@@ -1,5 +1,6 @@
 import datetime
 from ui.console import Console
+from entities.exercise import Exercise
 from repositories.exercise_day_repository import ExerciseDayRepository
 from database_connection import get_database_connection
 from repositories.exercise_repository import ExerciseRepository
@@ -39,14 +40,18 @@ class Service:
         date = self.ask_date()
         if not self._exercise_day_repository.get_date_id(date):
             self._exercise_day_repository.add_day(date)
+        date_id = self._exercise_day_repository.get_date_id(date)
         while True:
-            self._console.print_out("Enter exercise, 0 to quit")
+            self._console.print_out("Enter exercise, 0 to quit, leave empty to skip")
             name = self._console.read_input("Movement name: ")
             if name == "0":
                 break
             sets = self._console.read_input("Sets: ")
             reps = self._console.read_input("Reps: ")
-            self._exercise_repository.add_exercise(date, name, sets, reps)
+            rest = self._console.read_input("Rest between sets (minutes): ")
+            comments = self._console.read_input("Exercise notes: ")
+            exercise = Exercise(name, sets, reps, rest, comments)
+            self._exercise_repository.add_exercise(date_id, exercise)
 
     def list_exercises_in_day(self):
         date = self.ask_date()

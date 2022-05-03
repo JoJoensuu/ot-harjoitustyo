@@ -1,17 +1,15 @@
 from database_connection import get_database_connection
+from entities.exercise import Exercise
 
 class ExerciseRepository:
     def __init__(self, connection):
         self._connection = connection
         self._cursor = self._connection.cursor()
 
-    def add_exercise(self, day, name, sets, reps):
-        # needs cleaning up, get id from outside the method if possible
-        self._cursor.execute('SELECT id FROM exercise_days WHERE date=(?)', [day])
-        result = self._cursor.fetchone()
-        day_id = result[0]
+    def add_exercise(self, date_id, exercise):
         self._cursor.execute(
-            'INSERT INTO exercises (day_id, name, sets, reps) VALUES (?, ?, ?, ?)', (day_id, name, sets, reps)
+            'INSERT INTO exercises (day_id, name, sets, reps, rest, comments) VALUES (?, ?, ?, ?, ?, ?)',
+             (date_id, exercise.name, exercise.sets, exercise.reps, exercise.rest, exercise.comments)
         )
         self._connection.commit()
 
