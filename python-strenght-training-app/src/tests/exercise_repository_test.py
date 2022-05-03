@@ -34,5 +34,5 @@ class TestExerciseDayRepository(unittest.TestCase):
         exercise_repository.add_exercise(self.date1, "Test1", "1", "1")
         exercise_repository.add_exercise(self.date1, "Test2", "2", "2")
         request = exercise_repository.get_exercise_data(1)
-        string = request[1]
+        string = request[0]
         self.assertEqual(string, "Test1")
