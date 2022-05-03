@@ -13,14 +13,12 @@ class ExerciseRepository:
         self._connection.commit()
 
     def list_exercises(self, date_id):
-        cursor = self._connection.cursor()
-        cursor.execute('SELECT id, name, sets, reps, rest, comments FROM exercises WHERE day_id=(?)', [date_id])
-        result = cursor.fetchall()
+        self._cursor.execute('SELECT id, name, sets, reps, rest, comments FROM exercises WHERE day_id=(?)', [date_id])
+        result = self._cursor.fetchall()
         return result
 
     def delete_all(self, date_id):
-        cursor = self._connection.cursor()
-        cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [date_id])
+        self._cursor.execute('DELETE FROM exercises WHERE day_id=(?)', [date_id])
         self._connection.commit()
 
     def delete_single(self, id):
