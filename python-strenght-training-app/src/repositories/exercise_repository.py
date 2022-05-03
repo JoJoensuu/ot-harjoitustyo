@@ -6,11 +6,15 @@ class ExerciseRepository:
         self._cursor = self._connection.cursor()
 
     def add_exercise(self, date_id, exercise):
-        self._cursor.execute(
-            'INSERT INTO exercises (day_id, name, sets, reps, rest, comments) VALUES (?, ?, ?, ?, ?, ?)',
-             (date_id, exercise.name, exercise.sets, exercise.reps, exercise.rest, exercise.comments)
-        )
-        self._connection.commit()
+        try:
+            self._cursor.execute(
+                'INSERT INTO exercises (day_id, name, sets, reps, rest, comments) VALUES (?, ?, ?, ?, ?, ?)',
+                (date_id, exercise.name, exercise.sets, exercise.reps, exercise.rest, exercise.comments)
+            )
+            self._connection.commit()
+            return True
+        except:
+            return False
 
     def list_exercises(self, date_id):
         self._cursor.execute('SELECT id, name, sets, reps, rest, comments FROM exercises WHERE day_id=(?)', [date_id])

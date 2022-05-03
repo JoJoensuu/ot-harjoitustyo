@@ -13,11 +13,7 @@ class TestExerciseDayRepository(unittest.TestCase):
         self.exercise2 = Exercise("Test2")
 
     def test_add_exercise_adds_exercise_to_database(self):
-        exercise_repository.add_exercise(self.date1, self.exercise1)
-        exercise_repository.add_exercise(self.date1, self.exercise2)
-        result = exercise_repository.list_exercises(1)
-        list = [row for row in result]
-        self.assertEqual(len(list), 1)
+        self.assertEqual(exercise_repository.add_exercise(self.date1, self.exercise1), True)
 
     def test_delete_all_removes_exercises_from_day(self):
         exercise_repository.add_exercise(self.date1, self.exercise1)

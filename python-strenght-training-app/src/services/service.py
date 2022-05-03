@@ -51,7 +51,9 @@ class Service:
             rest = self._console.read_input("Rest between sets (minutes): ")
             comments = self._console.read_input("Exercise notes: ")
             exercise = Exercise(name, sets, reps, rest, comments)
-            self._exercise_repository.add_exercise(date_id, exercise)
+            request = self._exercise_repository.add_exercise(date_id, exercise)
+            if not request:
+                self._console.print_out("Adding exercise failed")
 
     def list_exercises_in_day(self):
         date = self.ask_date()
