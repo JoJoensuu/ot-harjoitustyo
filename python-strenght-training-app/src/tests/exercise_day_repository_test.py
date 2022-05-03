@@ -14,10 +14,6 @@ class TestExerciseDayRepository(unittest.TestCase):
         list = [day for day in days]
         self.assertEqual(len(list), 1)
 
-    def test_add_day_adding_same_date_returns_false(self):
-        exercise_day_repository.add_day(self.date1)
-        self.assertEqual(exercise_day_repository.add_day(self.date1), False)
-
     def test_get_date_id_returns_id(self):
         exercise_day_repository.add_day(self.date1)
         self.assertEqual(exercise_day_repository.get_date_id(self.date1), 1)
