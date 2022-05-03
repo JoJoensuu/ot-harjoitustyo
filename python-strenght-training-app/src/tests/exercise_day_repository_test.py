@@ -14,13 +14,6 @@ class TestExerciseDayRepository(unittest.TestCase):
         list = [day for day in days]
         self.assertEqual(len(list), 1)
 
-    def test_check_date_exists_returns_datetime(self):
-        exercise_day_repository.add_day(self.date1)
-        self.assertEqual(exercise_day_repository.check_date_exists(self.date1), "2022-05-01 00:00:00")
-
-    def test_check_date_exists_returns_false_if_not_in_database(self):
-        self.assertEqual(exercise_day_repository.check_date_exists(self.date1), False)
-
     def test_add_day_adding_same_date_returns_false(self):
         exercise_day_repository.add_day(self.date1)
         self.assertEqual(exercise_day_repository.add_day(self.date1), False)
@@ -28,6 +21,9 @@ class TestExerciseDayRepository(unittest.TestCase):
     def test_get_date_id_returns_id(self):
         exercise_day_repository.add_day(self.date1)
         self.assertEqual(exercise_day_repository.get_date_id(self.date1), 1)
+
+    def test_get_date_id_returns_false_if_not_in_database(self):
+        self.assertEqual(exercise_day_repository.get_date_id(self.date1), False)
 
     def test_delete_single_removes_one_day(self):
         exercise_day_repository.add_day(self.date1)

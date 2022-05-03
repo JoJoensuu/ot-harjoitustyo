@@ -17,11 +17,6 @@ class ExerciseDayRepository:
         rows = self._cursor.execute("select * from exercise_days")
         return rows
 
-    def check_date_exists(self, day):
-        self._cursor.execute('SELECT * FROM exercise_days WHERE date=(?)', [day])
-        result = self._cursor.fetchone()
-        return result[1] if result else False
-
     def get_date_id(self, day):
         self._cursor.execute('SELECT id FROM exercise_days WHERE date=(?)', [day])
         result = self._cursor.fetchone()

@@ -37,7 +37,7 @@ class Service:
 
     def add_exercise(self):
         date = self.ask_date()
-        if not self._exerciseDayRepository.check_date_exists(date):
+        if not self._exerciseDayRepository.get_date_id(date):
             self._exerciseDayRepository.add_day(date)
         while True:
             self._console.print_out("Enter exercise, 0 to quit")
