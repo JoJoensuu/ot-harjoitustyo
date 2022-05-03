@@ -1,4 +1,3 @@
-from os import curdir
 from database_connection import get_database_connection
 
 class ExerciseRepository:
@@ -11,7 +10,9 @@ class ExerciseRepository:
         self._cursor.execute('SELECT id FROM exercise_days WHERE date=(?)', [day])
         result = self._cursor.fetchone()
         day_id = result[0]
-        self._cursor.execute('INSERT INTO exercises (day_id, name, sets, reps) VALUES (?, ?, ?, ?)', (day_id, name, sets, reps))
+        self._cursor.execute(
+            'INSERT INTO exercises (day_id, name, sets, reps) VALUES (?, ?, ?, ?)', (day_id, name, sets, reps)
+        )
         self._connection.commit()
 
     def list_exercises(self, date_id):

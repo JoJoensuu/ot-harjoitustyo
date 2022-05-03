@@ -56,4 +56,6 @@ class Service:
         else:
             request = self._exerciseRepository.list_exercises(id)
             for row in request:
-                self._console.print_out(f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps")
+                self._console.print_out(
+                    f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
+                )
