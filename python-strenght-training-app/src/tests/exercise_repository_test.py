@@ -7,12 +7,12 @@ from entities.exercise import Exercise
 class TestExerciseDayRepository(unittest.TestCase):
     def setUp(self):
         exercise_day_repository.delete_all()
+        exercise_repository.delete_all(1)
         self.date1 = datetime.datetime(2022, 5, 1)
         self.exercise1 = Exercise("Test1", "0", "0", "0", "0")
         self.exercise2 = Exercise("Test2")
 
     def test_list_exercises_returns_list(self):
-        exercise_day_repository.delete_all()
         exercise_repository.add_exercise(self.date1, self.exercise1)
         result = exercise_repository.list_exercises(1)
         for row in result:
