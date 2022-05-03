@@ -1,5 +1,5 @@
 class Exercise:
-    def __init__(self, name, sets=None, reps=None, rest=None, comments=None):
+    def __init__(self, name, sets, reps, rest, comments):
         self.name = name
         self.sets = sets
         self.reps = reps

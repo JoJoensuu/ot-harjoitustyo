@@ -63,8 +63,7 @@ class Service:
             request = self._exercise_repository.list_exercises(id)
             for row in request:
                 self._console.print_out(
-                    row[2]
-                    #f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps"
+                    f"ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps, {row[4]} minutes rest between sets, notes: {row[5]}"
                 )
 
     def clear_calendar(self):
@@ -93,5 +92,6 @@ class Service:
         if not id:
             self._console.print_out("Date not in calendar")
         else:
-            self._exercise_repository.delete_single(id)
+            exercise_id = self._console.read_input("Enter exercise id that you want to remove: ")
+            self._exercise_repository.delete_single(exercise_id)
 
