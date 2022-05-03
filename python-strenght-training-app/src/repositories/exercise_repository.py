@@ -15,7 +15,7 @@ class ExerciseRepository:
 
     def list_exercises(self, date_id):
         cursor = self._connection.cursor()
-        cursor.execute('SELECT id, name, sets, reps FROM exercises WHERE day_id=(?)', [date_id])
+        cursor.execute('SELECT id, name, sets, reps, rest, comments FROM exercises WHERE day_id=(?)', [date_id])
         result = cursor.fetchall()
         return result
 
