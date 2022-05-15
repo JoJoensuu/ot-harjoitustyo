@@ -1,4 +1,4 @@
-from database_connection import get_database_connection
+from database_connection import get_database_connection, get_test_database_connection
 
 class ExerciseRepository:
     def __init__(self, connection):
@@ -63,3 +63,4 @@ class ExerciseRepository:
 
 
 exercise_repository = ExerciseRepository(get_database_connection())
+exercise_repository_test = ExerciseRepository(get_test_database_connection())

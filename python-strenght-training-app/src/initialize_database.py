@@ -1,4 +1,4 @@
-from database_connection import get_database_connection
+from database_connection import get_database_connection, get_test_database_connection
 
 
 def drop_tables(connection):
@@ -54,6 +54,13 @@ def initialize_database():
     """
 
     connection = get_database_connection()
+
+    drop_tables(connection)
+    create_tables(connection)
+
+def initialize_test_database():
+
+    connection = get_test_database_connection()
 
     drop_tables(connection)
     create_tables(connection)
