@@ -10,15 +10,9 @@ Pakkaus _ui_ sisältää käyttöliittymästä, _services_ sovelluslogiikasta ja
 
 ## Käyttöliittymä
 
-Käyttöliittymä sisältää kolme erillistä näkymää:
+Käyttöliittymä on toteutettu tekstikäyttöliittymänä, josta vastaavat luokat ui ja console.
 
-- Kirjautuminen
-- Uuden käyttäjän luominen
-- Todo-lista
-
-Jokainen näistä on toteutettu omana luokkanaan. Näkymistä yksi on aina kerrallaan näkyvänä. Näkymien näyttämisestä vastaa [UI](../src/ui/ui.py)-luokka. Käyttöliittymä on pyritty eristämään täysin sovelluslogiikasta. Se ainoastaan kutsuu [TodoService](../src/services/todo_service.py)-luokan metodeja.
-
-Kun sovelluksen todo-listan tilanne muuttuu, eli uusi käyttäjä kirjautuu, todoja merkitään tehdyksi tai niitä luodaan, kutsutaan sovelluksen metodia [initialize_todo_list](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/todos_view.py#L70) joka renderöi todolistanäkymän uudelleen sovelluslogiikalta saamansa näytettävien todojen listan perusteella.
+Tekstikäyttöliittymän valikon näyttämisestä ja sen käyttämisestä vastaa [UI](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/ui/ui.py)-luokka. Käyttäjän syöttämän tekstin välittämisestä vastaa [Console](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/ui/console.py)-luokka. Käyttöliittymä on pyritetty eristämään täysin sovelluslogiikasta. Se kutsuu [Service](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/services/service.py)-luokan metodeja.
 
 ## Sovelluslogiikka
 
@@ -35,24 +29,19 @@ Sovelluksen loogisen tietomallin muodostaa luokka  [Exercise](https://github.com
       }
 ```
 
-Toiminnallisista kokonaisuuksista vastaa luokkan [TodoService](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/services/todo_service.py) ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin. Näitä ovat esimerkiksi:
+Toiminnallisista kokonaisuuksista vastaa luokkan [Service](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/services/service.py) ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin.
 
-- `login(username, password)`
-- `get_undone_todos()`
-- `create_todo(content)`
-- `set_todo_done(todo_id)`
+_Service_ pääsee käsiksi harjoituksiin tietojen tallennuksesta vastaavan pakkauksessa _repositories_ sijaitsevien luokkien [ExerciseRepository](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/repositories/exercise_repository.py) ja [ExerciseDayRepository](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/repositories/exercise_day_repository.py) kautta. Luokkien toteutuksen [injektoidaan](https://en.wikipedia.org/wiki/Dependency_injection) sovelluslogiikalle konstruktorikutsun yhteydessä.
 
-_TodoService_ pääsee käsiksi käyttäjiin ja todoihin tietojen tallennuksesta vastaavan pakkauksessa _repositories_ sijaitsevien luokkien [TodoRepository](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/repositories/todo_repository.py) ja [UserRepository](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/repositories/user_repository.py) kautta. Luokkien toteutuksen [injektoidaan](https://en.wikipedia.org/wiki/Dependency_injection) sovelluslogiikalle konstruktorikutsun yhteydessä.
+`Service`-luokan ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 
-`TodoService`-luokan ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
-
-![Pakkausrakenne ja luokat](./kuvat/arkkitehtuuri-pakkaus-luokat.png)
+![Pakkausrakenne ja luokat](./kuvat/arkkitehtuuri-pakkaus.png)
 
 ## Tietojen pysyväistallennus
 
-Pakkauksen _repositories_ luokat `TodoRepository` ja `UserRepository` huolehtivat tietojen tallettamisesta. `TodoRepository`-luokka tallentee tietoa CSV-tiedostoon, kun taas `UserRepository`-luokka SQLite-tietokantaan.
+Pakkauksen _repositories_ luokat `ExerciseRepository` ja `ExerciseDayRepository` huolehtivat tietojen tallettamisesta. Molemmat tallentavat tietoa SQLite-tietokantaan.
 
-Luokat noudattavat [Repository](https://en.wikipedia.org/wiki/Data_access_object) -suunnittelumallia ja ne on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa. Sovelluslogiikan testauksessa hyödynnetäänkin tätä siten, että testeissä käytetään tiedostoon ja tietokantaan tallentavien olioiden sijaan keskusmuistiin tallentavia toteutuksia.
+Luokat noudattavat [Repository](https://en.wikipedia.org/wiki/Data_access_object) -suunnittelumallia ja ne on tarvittaessa mahdollista korvata uusilla toteutuksilla, jos sovelluksen datan talletustapaa päätetään vaihtaa.
 
 ### Tiedostot
 
@@ -69,7 +58,7 @@ Sovellus tallettaa tehtävät CSV-tiedostoon seuraavassa formaatissa:
 
 Eli tehtävän id, sisältö, tehtystatus (0 = ei tehty, 1 = on tehty) ja käyttäjän käyttäjätunnus. Kenttien arvot erotellaan puolipisteellä (;).
 
-Käyttäjät tallennetaan SQLite-tietokannan tauluun `users`, joka alustetaan [initialize_database.py](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/initialize_database.py)-tiedostossa.
+Harjoitukset ja harjoituspäivät tallennetaan SQLite-tietokannan tauluihin `exercises` ja `exercise_days`, jotka alustetaan [initialize_database.py](https://github.com/JoJoensuu/ot-harjoitustyo/blob/master/python-strenght-training-app/src/initialize_database.py)-tiedostossa.
 
 ## Päätoiminnallisuudet
 
@@ -144,9 +133,3 @@ sequenceDiagram
 ### Muut toiminnallisuudet
 
 Sama periaate toistoo sovelluksen kaikissa toiminnallisuuksissa, käyttöliittymän tapahtumakäsittelijä kutsuu sopivaa sovelluslogiikan metodia, sovelluslogiikka päivittää todojen tai kirjautuneen käyttäjän tilaa. Kontrollin palatessa käyttäliittymään, päivitetään tarvittaessa todojen lista sekä aktiivinen näkyvä.
-
-## Ohjelman rakenteeseen jääneet heikkoudet
-
-### Käyttöliittymä
-
-Graafisen käyttöliittymän koodissa on jonkin verran toisteisuuttaa, josta voisi toteuttaa omia komponenttejaan. Esimerkiksi pylint ilmoittaa toisteisesta koodista luokissa [CreateUserview](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/create_user_view.py) ja [LoginView](https://github.com/ohjelmistotekniikka-hy/python-todo-app/blob/master/src/ui/login_view.py).
