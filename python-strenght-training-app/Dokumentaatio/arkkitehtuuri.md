@@ -61,11 +61,11 @@ sequenceDiagram
   participant Console
   participant Service
   participant ExerciseDayRepository
-  UI->>Console: ask user for date
-  UI->>Service: add_exercise_day(date)
+  Ui->>Console: ask user for date
+  Ui->>Service: add_exercise_day(date)
   Service->>ExerciseDayRepository: get_date_id(date)
   Service->>ExerciseDayRepository: add_day(date)
-  Service->>UI: True
+  Service->>Ui: True
 ```
 
 
@@ -79,12 +79,12 @@ sequenceDiagram
   participant Service
   participant ExerciseDayRepository
   participant ExerciseRepository
-  UI->>Console: ask user for date
-  UI->>Service: add_exercise_day(date)
+  Ui->>Console: ask user for date
+  Ui->>Service: add_exercise_day(date)
   Service->>ExerciseDayRepository: get_date_id(date)
   Service->>ExerciseDayRepository: add_day(date)
   Service->>ExerciseDayRepository: check_date(date)
-  UI->>Console: ask user for exercise information
-  UI->>Service: add_exercise(date_id, name, sets, reps, rest, comments)
+  Ui->>Console: ask user for exercise information
+  Ui->>Service: add_exercise(date_id, name, sets, reps, rest, comments)
   Service->>ExerciseRepository: add_exercise(date_id, Exercise)
 ```
