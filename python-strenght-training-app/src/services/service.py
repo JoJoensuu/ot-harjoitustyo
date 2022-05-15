@@ -19,8 +19,7 @@ class Service:
     def check_exercise_exists(self, exercise_id):
         if not self._exercise_repository.get_exercise_data(exercise_id):
             return False
-        else:
-            return True
+        return True
 
     def add_exercise_day(self, date):
         date_id = self._exercise_day_repository.get_date_id(date)
@@ -64,13 +63,13 @@ class Service:
         request = self.check_exercise_exists(exercise_id)
         if not request:
             return False
-        else:
-            self._exercise_repository.delete_single(exercise_id)
-            return True
+        self._exercise_repository.delete_single(exercise_id)
+        return True
 
     def check_int(self, value):
         try:
             int(value)
+            return
         except:
             return ValueError
 

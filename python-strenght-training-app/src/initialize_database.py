@@ -49,14 +49,23 @@ def create_tables(connection):
 
     connection.commit()
 
+def check_if_exists_tables(connection):
+    cursor = connection.cursor()
+
+    cursor.execute('''
+        SELECT * FROM exercise_days''')
+    result = cursor.fetchall()
+    if not result:
+        drop_tables(connection)
+        create_tables(connection)
+
 def initialize_database():
     """Initializes database
     """
 
     connection = get_database_connection()
 
-    drop_tables(connection)
-    create_tables(connection)
+    check_if_exists_tables(connection)
 
 def initialize_test_database():
 
