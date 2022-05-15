@@ -4,7 +4,7 @@ import datetime
 from initialize_database import initialize_database
 
 COMMANDS = {
-    "0": "x QUIT",
+    "0": "0 QUIT",
     "1": "1 add exercise day",
     "2": "2 add exercise",
     "3": "3 list exercise days",
