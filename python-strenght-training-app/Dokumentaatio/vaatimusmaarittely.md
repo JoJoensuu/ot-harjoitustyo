@@ -12,10 +12,7 @@ Sovelluksen avulla käyttäjän on mahdollista pitää kirjaa ja suunnitella kun
 	- [x] toistot
 	- [x] tauot
 	- [x] huomiot
-- [ ] Käyttäjä voi muokata jo lisättyjä tietoja
-- [ ] Käyttäjä näkee kuntosaliliikkeen kohdalla edellisten harjoitusten sarjapainot
 - [x] Sovelluksella on käyttöliittymä
-- [ ] Sovelluksella on graafinen käyttöliittymä
 
 ## Jatkokehitysideoita
 - [ ] Sovellukseen voidaan lisätä muunlaisia harjoituksia, esim juoksu tai pyöräilyharjoituksia

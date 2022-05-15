@@ -1,12 +1,12 @@
-#Käyttöohje
+# Käyttöohje
 
 Lataa viimeisimmän releasen lähdekoodi valitsemalla Assets-osion alta Source code.
 
-##Konfigurointi
+## Konfigurointi
 
 Tiedostot luodaan automaattisesti data-hakemistoon, jos niitä ei siellä vielä ole.
 
-##Ohjelman käynnistäminen
+## Ohjelman käynnistäminen
 
 Asenna riippuvuudet komennolla:
 ```
