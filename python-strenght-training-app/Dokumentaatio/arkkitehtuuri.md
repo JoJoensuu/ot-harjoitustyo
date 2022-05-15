@@ -3,7 +3,7 @@
 ##Rakenne
 
 ```mermaid
- classDiagram
+ sequenceDiagram
 	ui-->>services
 	services-->>entities
 	services-->>repositories
