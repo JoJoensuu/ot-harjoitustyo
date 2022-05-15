@@ -35,6 +35,7 @@ poetry run invoke start
 ## Komentorivitoiminnot
 
 ### Ohjelman suorittaminen
+Komennot täytyy ajaa python-strenght-training-app -kansiossa!
 Ohjelman pystyy suorittamaan komennolla:
 
 ```

@@ -1,6 +1,7 @@
 # Käyttöohje
 
 Lataa viimeisimmän releasen lähdekoodi valitsemalla Assets-osion alta Source code.
+HUOM: Komennot tulee suorittaa python-strenght-training-app -kansiossa.
 
 ## Konfigurointi
 
