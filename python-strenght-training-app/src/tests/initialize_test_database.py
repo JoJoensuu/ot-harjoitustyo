@@ -1,4 +1,4 @@
-from test_database_connection import get_database_connection
+from tests.test_database_connection import get_database_connection
 
 def drop_tables(connection):
     """Removes existing tables from database.
@@ -48,7 +48,7 @@ def create_tables(connection):
 
     connection.commit()
 
-def initialize_database():
+def initialize_test_database():
     """Initializes database
     """
 
@@ -59,4 +59,4 @@ def initialize_database():
 
 
 if __name__ == '__main__':
-    initialize_database()
+    initialize_test_database()
