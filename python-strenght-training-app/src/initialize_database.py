@@ -50,6 +50,12 @@ def create_tables(connection):
     connection.commit()
 
 def check_if_exists_tables(connection):
+    """Checks if tables already exist,
+    creates new tables if not
+
+    Args:
+        connection: connection entity for database
+    """
     cursor = connection.cursor()
 
     cursor.execute('''

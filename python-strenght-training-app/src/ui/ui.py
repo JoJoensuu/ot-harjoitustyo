@@ -17,11 +17,20 @@ COMMANDS = {
 }
 
 class UI:
+
+    """Represents the user interface.
+    """
+
     def __init__(self):
         self._console = Console()
         self._service = Service()
 
     def start(self):
+
+        """Create or start up datatabase,
+        print out instructions
+        """
+
         initialize_database()
         self._instructions()
         
@@ -54,11 +63,22 @@ class UI:
                 self._instructions()
 
     def _instructions(self):
+
+        """prints out app instructions for the user
+        """
+
         self._console.print_out("Strenght training app")
         for i in COMMANDS:
             self._console.print_out(COMMANDS[i])
 
     def _ask_date(self):
+
+        """asks user for year, month and date
+
+        Returns:
+            date: a datetime object (YYYY.MM.DD)
+        """
+
         self._console.print_out("Select date: ")
         year = self._console.read_year()
         month = self._console.read_month()
@@ -67,6 +87,14 @@ class UI:
         return date
 
     def _check_date_exists(self):
+
+        """Asks user for date and returns date_id if date exists in calendar,
+        else returns false
+
+        Returns:
+            date_id or False
+        """
+
         date = self._ask_date()
         date_id = self._service.check_date(date)
         if date_id == None:
@@ -75,11 +103,23 @@ class UI:
             return date_id
 
     def _add_exercise_day(self):
+
+        """Asks user for date and adds date to calendar if not already there
+        """
+
         date = self._ask_date()
         if not self._service.add_exercise_day(date):
             self._console.print_out("Adding date failed")
 
     def _add_exercise(self):
+
+        """Asks user for date,
+        adds date to calendar if doesnt exist,
+        checks date_id,
+        asks user for exercise information,
+        adds exercise to exercise_repository
+        """
+
         date = self._ask_date()
         self._service.add_exercise_day(date)
         date_id = self._service.check_date(date)
@@ -107,6 +147,10 @@ class UI:
             self._service.add_exercise(date_id, name, sets, reps, rest, comments)
 
     def _list_exercise_days(self):
+
+        """Lists exercise days in calendar, if any exist
+        """
+
         days = self._service.list_exercise_days()
         if not days:
             self._console.print_out("No dates in calendar")
@@ -115,6 +159,12 @@ class UI:
                 self._console.print_out(f"Id: {day[0]} - {day[1]}")
 
     def _list_exercises_in_day(self):
+
+        """Asks user for date,
+        checks date exists,
+        returns exercises for selected date
+        """
+
         date_id = self._check_date_exists()
         if not date_id:
             self._console.print_out("Date not in calendar")
@@ -127,6 +177,11 @@ class UI:
                     self._console.print_out(f"""ID: {row[0]} Exercise: {row[1]}, {row[2]} sets, {row[3]} reps, {row[4]} minutes rest between sets, notes: {row[5]}""")
 
     def _clear_calendar(self):
+
+        """Deletes all exercise days from calendar,
+        after user confirmation
+        """
+
         confirm = self._console.read_input("Confirm clearing calendar with y: ")
         if confirm == "y":
             self._service.clear_calendar()
@@ -134,6 +189,12 @@ class UI:
             return
     
     def _remove_date(self):
+
+        """Asks user for date,
+        checks if date exists,
+        removes date if exists
+        """
+
         date_id = self._check_date_exists()
         if not date_id:
             self._console.print_out("Date not in calendar")
@@ -141,11 +202,21 @@ class UI:
             self._service.remove_date(date_id)
 
     def _clear_exercises(self):
+
+        """Removes all exercises after user confirmation
+        """
+
         confirm = self._console.read_input("Confirm clearing exercises with y: ")
         if confirm == "y":
             self._service.clear_exercises()
     
     def _delete_exercise(self):
+
+        """Asks user for date,
+        Asks user for exercise_id,
+        deletes selected exercise, if exists
+        """
+
         date_id = self._check_date_exists()
         if not date_id:
             self._console.print_out("Date not in calendar")

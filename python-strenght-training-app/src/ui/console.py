@@ -10,10 +10,23 @@ class Console:
         print(string)
 
     def read_input(self, string):
+        """User input
+
+        Args:
+            string
+
+        Returns:
+            User string
+        """
         command = input(string)
         return command
 
     def read_year(self):
+        """Reads 4 digit year from user
+
+        Returns:
+            Year
+        """
         while True:
             command = input("Enter year (4 digits): ")
             try:
@@ -29,6 +42,11 @@ class Console:
                 return year
 
     def read_month(self):
+        """Reads max 2 digit month from user
+
+        Returns:
+            Month
+        """
         while True:
             command = input("Enter month (1-2 digits): ")
             try:
@@ -44,6 +62,11 @@ class Console:
                 return month
 
     def read_day(self):
+        """Reads max 2 digit day from user
+
+        Returns:
+            Day
+        """
         while True:
             command = input("Enter day (1-2 digits): ")
             try:
