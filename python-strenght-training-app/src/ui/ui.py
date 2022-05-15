@@ -11,7 +11,7 @@ COMMANDS = {
     "4": "4 list exercises in given day",
     "5": "5 clear calendar",
     "6": "6 remove date from calendar",
-    "7": "7 remove all exercises from date",
+    "7": "7 remove all exercises",
     "8": "8 remove single exercise",
     "9": "9 list instructions"
 }
@@ -88,12 +88,23 @@ class UI:
             name = self._console.read_input("Movement name: ")
             if name == "0":
                 break
+            elif len(name) > 30:
+                self._console.print_out("Invalid input\n")
+                continue
             sets = self._console.read_input("Sets: ")
+            if self._service.check_int(sets) == ValueError:
+                self._console.print_out("Invalid input\n")
+                continue
             reps = self._console.read_input("Reps: ")
+            if self._service.check_int(reps) == ValueError:
+                self._console.print_out("Invalid input\n")
+                continue
             rest = self._console.read_input("Rest between sets (minutes): ")
+            if self._service.check_int(rest) == ValueError:
+                self._console.print_out("Invalid input\n")
+                continue
             comments = self._console.read_input("Exercise notes: ")
-            if not self._service.add_exercise(date_id, name, sets, reps, rest, comments):
-                self._console.print_out("Adding exercise failed")
+            self._service.add_exercise(date_id, name, sets, reps, rest, comments)
 
     def _list_exercise_days(self):
         days = self._service.list_exercise_days()
@@ -130,11 +141,9 @@ class UI:
             self._service.remove_date(date_id)
 
     def _clear_exercises(self):
-        date_id = self._check_date_exists()
-        if not date_id:
-            self._console.print_out("Date not in calendar")
-        else:
-            self._service.clear_exercises(date_id)
+        confirm = self._console.read_input("Confirm clearing exercises with y: ")
+        if confirm == "y":
+            self._service.clear_exercises()
     
     def _delete_exercise(self):
         date_id = self._check_date_exists()

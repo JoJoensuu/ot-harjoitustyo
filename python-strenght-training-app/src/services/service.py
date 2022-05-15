@@ -31,19 +31,23 @@ class Service:
 
     def add_exercise(self, date_id, name, sets, reps, rest, comments):
         exercise = Exercise(name, sets, reps, rest, comments)
-        if not self._exercise_repository.add_exercise(date_id, exercise):
-            return False
-        return True
+        self._exercise_repository.add_exercise(date_id, exercise)
 
     def list_exercise_days(self):
         days = self._exercise_day_repository.list_days()
-        if days == None:
+        if not days:
             return False
         return days
 
     def list_exercises_in_day(self, date_id):
         rows = self._exercise_repository.list_exercises(date_id)
-        if rows == None:
+        if not rows:
+            return False
+        return rows
+
+    def list_all_exercises(self):
+        rows = self._exercise_repository.list_all_exercises()
+        if not rows:
             return False
         return rows
 
@@ -53,12 +57,8 @@ class Service:
     def remove_date(self, date_id):
         self._exercise_day_repository.delete_single(date_id)
 
-    def clear_exercises(self, date_id):
-        date_id = self.check_date()
-        if not date_id:
-            self._console.print_out("Date not in calendar")
-        else:
-            self._exercise_repository.delete_all(date_id)
+    def clear_exercises(self):
+        self._exercise_repository.delete_all()
 
     def delete_exercise(self, exercise_id):
         request = self.check_exercise_exists(exercise_id)
@@ -67,3 +67,11 @@ class Service:
         else:
             self._exercise_repository.delete_single(exercise_id)
             return True
+
+    def check_int(self, value):
+        try:
+            int(value)
+        except:
+            return ValueError
+
+service = Service()

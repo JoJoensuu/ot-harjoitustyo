@@ -6,8 +6,7 @@ class ExerciseRepository:
         self._cursor = self._connection.cursor()
 
     def add_exercise(self, date_id, exercise):
-        try:
-            self._cursor.execute(
+        self._cursor.execute(
                 """
                 INSERT INTO exercises
                 (day_id, name, sets, reps, rest, comments)
@@ -22,37 +21,31 @@ class ExerciseRepository:
                     exercise.comments
                     )
             )
-            self._connection.commit()
-            return True
-        except:
-            return False
+        self._connection.commit()
 
     def list_exercises(self, date_id):
         self._cursor.execute("""
             SELECT id, name, sets, reps, rest, comments
             FROM exercises where day_id=(?)""", [date_id])
         rows = self._cursor.fetchall()
-        return rows
+        return rows if rows else False
 
-    def delete_all(self, date_id):
-        try:
-            self._cursor.execute("""
-            DELETE FROM exercises WHERE day_id=(?)
-            """, [date_id])
-            self._connection.commit()
-            return True
-        except:
-            return False
+    def list_all_exercises(self):
+        self._cursor.execute("""SELECT id, name, sets, reps, rest, comments FROM exercises""")
+        rows = self._cursor.fetchall()
+        return rows if rows else False
+
+    def delete_all(self):
+        self._cursor.execute("""
+            DELETE FROM exercises
+            """)
+        self._connection.commit()
 
     def delete_single(self, exercise_id):
-        try:
-            self._cursor.execute("""
+        self._cursor.execute("""
             DELETE FROM exercises WHERE id=(?)
             """, [exercise_id])
-            self._connection.commit()
-            return True
-        except:
-            return False
+        self._connection.commit()
 
     def get_exercise_data(self, exercise_id):
         self._cursor.execute("""

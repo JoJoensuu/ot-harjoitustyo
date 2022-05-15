@@ -38,7 +38,7 @@ def create_tables(connection):
     cursor.execute('''
         create table exercises (
             id integer primary key,
-            day_id integer references exercise_days,
+            day_id integer references exercise_days ON DELETE CASCADE,
             name text,
             sets integer,
             reps integer,
