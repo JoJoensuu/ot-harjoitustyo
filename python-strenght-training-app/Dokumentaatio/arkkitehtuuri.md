@@ -1,16 +1,11 @@
-###Arkkitehtuuri
+#Arkkitehtuuri
 
+##Rakenne
 
 ```mermaid
  classDiagram
-      Todo "*" --> "1" User
-      class User{
-          username
-          password
-      }
-      class Todo{
-          id
-          content
-          done
-      }
+	ui-->>services
+	services-->>entities
+	services-->>repositories
+	repositories-->>entities
 ```
