@@ -57,7 +57,7 @@ Kun tekstikäyttöliittymän valikosta valitaan "1" etenee ohjelman toiminta seu
 
 ```mermaid
 sequenceDiagram
-  actor Ui
+  participant Ui
   participant Console
   participant Service
   participant ExerciseDayRepository
@@ -74,7 +74,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-  actor Ui
+  participant Ui
   participant Console
   participant Service
   participant ExerciseDayRepository
