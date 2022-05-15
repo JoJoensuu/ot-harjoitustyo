@@ -10,8 +10,9 @@ class ExerciseDayRepository:
         self._connection.commit()
 
     def list_days(self):
-        rows = self._cursor.execute("select * from exercise_days")
-        return rows
+        self._cursor.execute("select * from exercise_days")
+        rows = self._cursor.fetchall()
+        return rows if rows else False
 
     def get_date_id(self, day):
         self._cursor.execute('SELECT id FROM exercise_days WHERE date=(?)', [day])
